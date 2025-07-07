@@ -10,7 +10,7 @@
       font-family: 'Georgia', serif;
       background: #000000; /* fundo preto sólido */
       color: #a3d1ff;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .hero {
@@ -111,6 +111,8 @@
       font-size: 0.9em;
       color: #999;
       z-index: 3;
+      width: 100%;
+      text-align: center;
     }
 
     @media (max-width: 600px) {
@@ -166,7 +168,7 @@
       const hoje = new Date();
       const diff = hoje - inicio;
       const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      document.getElementById("contador").textContent = `Já se passaram ${dias} dia(s) desde que me apaixonei em você.`;
+      document.getElementById("contador").textContent = `Já se passaram ${dias} dia(s) desde 16 de junho.`;
     }
   </script>
 
