@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para minha Perséfone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: radial-gradient(ellipse at bottom, #0d0d1a 0%, #000000 100%);
+      color: #a3d1ff;
+      overflow: hidden;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 50px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #a3d1ff;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: #5f27cd;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.4s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    button:hover {
+      background-color: #7d5fff;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .card-icon {
+      font-size: 1.4em;
+    }
+
+    .carta-wrapper {
+      perspective: 1000px;
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .carta {
+      transform-style: preserve-3d;
+      transition: transform 1.5s ease;
+      width: 90%;
+      max-width: 700px;
+      height: auto;
+      color: #a3d1ff;
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 20px rgba(255, 204, 213, 0.2);
+      backface-visibility: hidden;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    .carta.aberta {
+      animation: abrirCarta 1.4s forwards;
+    }
+
+    @keyframes abrirCarta {
+      0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+        max-height: 0;
+      }
+      60% {
+        transform: rotateX(30deg);
+        opacity: 1;
+        max-height: 2000px;
+      }
+      100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+        max-height: 2000px;
+      }
+    }
+
+    .contador {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #ffd700;
+      font-size: 1.1em;
+      z-index: 3;
+    }
+
+    .stars {
+      background: transparent url('https://i.imgur.com/YbCZGhj.png') repeat top center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: starMove 200s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes starMove {
+      from {background-position: 0 0;}
+      to {background-position: 10000px 10000px;}
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9em;
+      color: #999;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <section class="hero">
+    <h1>Para minha Perséfone</h1>
+    <button onclick="abrirCarta()">
+      <span class="card-icon">💌</span> Abrir Carta
+    </button>
+
+    <div class="carta-wrapper">
+      <div id="carta" class="carta">
+        <p>
+          Se o Olimpo te olhasse com os olhos que eu te vejo,<br>
+          Athena não seria a mais inteligente,<br>
+          Artemis não seria a mais certeira,<br>
+          Afrodite não seria a mais bela,<br>
+          Deméter não seria tão adorada,<br>
+          Freya não seria a rainha,<br>
+          mas sim você.<br><br>
+          Se Zeus nos julgar, Poseidon nos afastar, Áres declarar guerra a ti,<br>
+          eu trarei do submundo o que for necessário,<br>
+          mas farei de tudo por ti, minha Perséfone.<br>
+        </p>
+        <div class="contador" id="contador"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>De Lucas para Laura.</footer>
+
+  <script>
+    function abrirCarta() {
+      const carta = document.getElementById("carta");
+      carta.classList.add("aberta");
+      atualizarContador();
+    }
+
+    function atualizarContador() {
+      const inicio = new Date("2025-06-16");
+      const hoje = new Date();
+      const diff = hoje - inicio;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById("contador").textContent = `Já se passaram ${dias} dia(s) desde que me apaixonei por você.`;
+    }
+  </script>
+
+</body>
+</html>
